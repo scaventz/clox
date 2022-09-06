@@ -1,8 +1,9 @@
-#include "common.h"
 #include "chunk.h"
 #include "debug.h"
+#include "vm.h"
 
 int main() {
+    initVM();
     Chunk chunk;
     initChunk(&chunk);
 
@@ -16,6 +17,9 @@ int main() {
     writeChunk(&chunk, OP_RETURN,23);
     disassembleChunk(&chunk, "test chunk");
 
+    printf("== running vm ==\n");
+    interpret(&chunk);
+    freeVM();
     freeChunk(&chunk);
     return 0;
 }
