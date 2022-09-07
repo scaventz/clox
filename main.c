@@ -11,8 +11,7 @@ int main() {
     writeChunk(&chunk, OP_CONSTANT, 11);
     writeChunk(&chunk, constantIndex, 11);
 
-    writeChunk(&chunk, OP_CONSTANT, 22);
-    writeChunk(&chunk, constantIndex, 22);
+    writeChunk(&chunk, OP_NEGATE, 12);
 
     writeChunk(&chunk, OP_RETURN,23);
     disassembleChunk(&chunk, "test chunk");
@@ -21,5 +20,6 @@ int main() {
     interpret(&chunk);
     freeVM();
     freeChunk(&chunk);
+
     return 0;
 }
