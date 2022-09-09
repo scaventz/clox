@@ -117,9 +117,8 @@ static TokenType identifierType() {
         case 'c': return checkKeyword(1, 4, "lass", TOKEN_CLASS);
         case 'e': return checkKeyword(1, 3, "lse", TOKEN_ELSE);
         case 'f' : {
-            switch (scanner.start[1]) {
-                if (scanner.current - scanner.start > 1) {
-                    case 'a' : return checkKeyword(2,3,"lse",TOKEN_FALSE);
+            if (scanner.current - scanner.start > 1) {
+                switch (scanner.start[1]) {
                     case 'o' : return checkKeyword(2, 1,"r", TOKEN_FOR);
                     case 'u' : return checkKeyword(2, 1, "n", TOKEN_FUN);
                 }
@@ -185,7 +184,7 @@ static Token string() {
     return makeToken(TOKEN_STRING);
 }
 
-Token scanToken(const char* source) {
+Token scanToken() {
     skipWhitespace();
     scanner.start = scanner.current;
     if(isAtEnd()) return makeToken(TOKEN_EOF);

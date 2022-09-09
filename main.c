@@ -57,6 +57,9 @@ static void runFile(const char* path) {
 }
 
 int main(int argc, const char *argv[]) {
+#ifdef DEBUG_PRINT_CODE
+    setbuf(stdout, 0);
+#endif
     initVM();
 
     if (argc == 1) {
