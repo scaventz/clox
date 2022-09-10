@@ -28,6 +28,8 @@ Value pop() {
 }
 
 InterpretResult run() {
+    printf("\n");
+    printf("== executing bytecode: ==\n");
 #define READ_BYTE() (*vm.ip++)
 #define READ_CONSTANT() (vm.chunk->constants.values[READ_BYTE()])
 #define BINARY_OP(op) \
@@ -90,7 +92,7 @@ InterpretResult run() {
             }
 
         }
-        printf("== instruction separator ==\n\n");
+        printf("---------------------\n");
     }
 #undef READ_BYTE
 #undef READ_CONSTANT
