@@ -221,9 +221,9 @@ static void parsePrecedence(Precedence precedence) {
         error("Expect expression");
         return;
     }
-
     prefixRule();
-    while (precedence <= getRule(parser.current.type)->precedence) {
+
+    while (getRule(parser.current.type)->precedence >= precedence) {
         advance();
         ParseFn infixRule = getRule(parser.previous.type)->infix;
         infixRule();
