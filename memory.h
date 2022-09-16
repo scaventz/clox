@@ -1,6 +1,11 @@
 #ifndef CLOX_MEMORY_H
 #define CLOX_MEMORY_H
 
+#include "common.h"
+
+#define ALLOCATE(type, count) \
+    ((type*) reallocate(NULL, sizeof(type)*(count)))
+
 #define GROW_CAPACITY(capacity) \
     ((capacity) < 8 ? 8 : (capacity) * 2)
 
